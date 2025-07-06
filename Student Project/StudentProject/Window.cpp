@@ -1,7 +1,7 @@
 #pragma once
 #include "Window.h"
 #include "wx/display.h"
-
+// TODO: Clean up file;
 // using macros
 #define BUTTON_EVT_ID_1 30001 // macro for btn_1
 #define BUTTON_EVT_ID_2 30002 // macro for btn_2
@@ -17,16 +17,15 @@ enum BUTTON_EVT
     BTN_5
 };
 
-// could also use event binding Bind() method to inline functionality for
-// dynamic elements
+// could also use event binding Bind() method to inline functionality for dynamic elements
 
 // define a macro Event Lookup Table
-wxBEGIN_EVENT_TABLE( MainWindow, wxFrame )
-EVT_BUTTON( BUTTON_EVT::BTN_1, MainWindow::OnButtonClick ) // register macro for btn 1
-EVT_BUTTON( BUTTON_EVT_ID_2, MainWindow::OnButtonClick ) EVT_PAINT( OnPaint )
-EVT_SIZE( OnSizeChanged )
+//wxBEGIN_EVENT_TABLE( MainWindow, wxFrame )
+//EVT_BUTTON( BUTTON_EVT::BTN_1, MainWindow::OnButtonClick ) // register macro for btn 1
+//EVT_BUTTON( BUTTON_EVT_ID_2, MainWindow::OnButtonClick ) EVT_PAINT( OnPaint )
+//EVT_SIZE( OnResize )
 //EVT_SIZE( OnSize ) 
-wxEND_EVENT_TABLE( )
+//wxEND_EVENT_TABLE( )
 
 MainWindow::MainWindow( )
     : wxFrame( nullptr, wxID_ANY, "Boids", wxDefaultPosition, wxSize( 640, 480 ) )
@@ -34,9 +33,11 @@ MainWindow::MainWindow( )
     wxBoxSizer* sizer = new wxBoxSizer( wxVERTICAL );
     this->SetSizer( sizer );
 
-
     _drawingPanel = new DrawingPanel( this );
 
+    sizer->Add( _drawingPanel, 1, wxEXPAND | wxALL, 10 );
+
+    this->Bind( wxEVT_SIZE, &MainWindow::OnSizeChange, this );
 
     // TODO: refactor buttons to class
    /* _button = new wxButton( this, BUTTON_EVT_ID_1, "Click-me", wxDefaultPosition,
@@ -81,31 +82,32 @@ MainWindow::~MainWindow( ) {}
 //    dc.DrawRectangle( topLeftX, topLeftY, width, height );
 //}
 
-void MainWindow::OnSizeChanged( wxSizeEvent& event )
+void MainWindow::OnSizeChange( wxSizeEvent& event )
 {
     _drawingPanel->SetSize( event.GetSize( ) );
-    Refresh( );
-}
-
-void MainWindow::OnSize( wxSizeEvent& event )
-{
-
     Refresh( );
     event.Skip( );
 }
 
+//void MainWindow::OnSize( wxSizeEvent& event )
+//{
+//
+//    Refresh( );
+//    event.Skip( );
+//}
+
 //void MainWindow::OnPaint( wxPaintEvent& event ) { _drawRect( event ); }
 
-void MainWindow::OnButtonClick( wxCommandEvent& event )
-{
-    if ( event.GetId( ) == BUTTON_EVT::BTN_1 )
-    {
-        _count += 1;
-        std::string msg = "Clicked " + std::to_string( _count );
-        _button->SetLabel( msg );
-    }
-    else if ( event.GetId( ) == BUTTON_EVT_ID_2 )
-    {
-        _button2->SetSize( _button2->GetSize( ).x + 5, _button2->GetSize( ).y + 5 );
-    }
-};
+//void MainWindow::OnButtonClick( wxCommandEvent& event )
+//{
+//    if ( event.GetId( ) == BUTTON_EVT::BTN_1 )
+//    {
+//        _count += 1;
+//        std::string msg = "Clicked " + std::to_string( _count );
+//        _button->SetLabel( msg );
+//    }
+//    else if ( event.GetId( ) == BUTTON_EVT_ID_2 )
+//    {
+//        _button2->SetSize( _button2->GetSize( ).x + 5, _button2->GetSize( ).y + 5 );
+//    }
+//};

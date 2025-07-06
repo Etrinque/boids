@@ -1,6 +1,7 @@
 #pragma once
 #include "wx/wx.h"
 #include "DrawingPanel.h"
+// TODO: Clean up file;
 class MainWindow : public wxFrame
 {
 public:
@@ -15,10 +16,10 @@ private:
     DrawingPanel* _drawingPanel;
 
 
-    //void _drawRect( wxPaintEvent& event );
-    void OnSizeChanged( wxSizeEvent& event );
-    void OnSize( wxSizeEvent& event );
-    //void OnPaint( wxPaintEvent& event );
+    void OnSizeChange( wxSizeEvent& event );
     void OnButtonClick( wxCommandEvent& event );
-    wxDECLARE_EVENT_TABLE( );
+    //void _drawRect( wxPaintEvent& event );
+    //void OnSize( wxSizeEvent& event );
+    //void OnPaint( wxPaintEvent& event );
+    //wxDECLARE_EVENT_TABLE( );
 };
