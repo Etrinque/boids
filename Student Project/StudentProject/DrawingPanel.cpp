@@ -3,6 +3,7 @@
 #include "wx/graphics.h"
 #include "wx/dcbuffer.h"
 
+
 //wxBEGIN_EVENT_TABLE( DrawingPanel, wxPanel )
 //EVT_PAINT( DrawingPanel::OnPaint )
 //wxEND_EVENT_TABLE( )
@@ -27,31 +28,24 @@ void DrawingPanel::OnPaint( wxPaintEvent& event )
     context->SetPen( *wxBLACK );
     context->SetBrush( *wxWHITE );
 
-    int xOffset = 0;
-    int yOffset = 0;
+    float xOffset = 0.0;
+    float yOffset = 0.0;
 
-    // testing larger size
-   /* _gridSize = 30;
-    _cellSize.x = 15;
-    _cellSize.y = 15;*/
+    wxSize size = this->GetSize( );
+    float cellSizeX = size.GetWidth( ) / _gridSize;
+    float cellSizeY = size.GetHeight( ) / _gridSize;
 
     for ( int i = 0; i < _gridSize; i++ )
     {
 
         for ( int j = 0; j < _gridSize; j++ )
         {
-            context->DrawRectangle( xOffset, yOffset, _cellSize.x, _cellSize.y );
-            xOffset += _cellSize.x;
-            wxMilliSleep( 200 );
+            context->DrawRectangle( xOffset, yOffset, cellSizeX, cellSizeY );
+            xOffset += cellSizeX;
+
         }
-        xOffset = 0;
-        yOffset += _cellSize.y;
+        xOffset = 0.0;
+        yOffset += cellSizeY;
     }
-  /*  wxSize size = GetSize( );
-    int centerX = size.x / 2;
-    int centerY = size.y / 2;
-    int height = 100;
-    int width = 100;
-    context->DrawRectangle( centerX - width / 2, centerY - height / 2, width, height );*/
 
 }

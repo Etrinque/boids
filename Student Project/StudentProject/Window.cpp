@@ -29,7 +29,7 @@ EVT_SIZE( OnSizeChanged )
 wxEND_EVENT_TABLE( )
 
 MainWindow::MainWindow( )
-    : wxFrame( nullptr, wxID_ANY, "Boids", wxDefaultPosition, wxSize( 800, 600 ) )
+    : wxFrame( nullptr, wxID_ANY, "Boids", wxDefaultPosition, wxSize( 640, 480 ) )
 {
     wxBoxSizer* sizer = new wxBoxSizer( wxVERTICAL );
     this->SetSizer( sizer );
@@ -48,38 +48,38 @@ MainWindow::MainWindow( )
 
 MainWindow::~MainWindow( ) {}
 
-void MainWindow::_drawRect( wxPaintEvent& event )
-{
-    wxPaintDC dc( this ); // create the device context for drawing
-
-    wxPen Pen( wxColour( 100, 100, 100, 0.5 ), 2, wxPENSTYLE_DOT_DASH );
-    dc.SetPen( Pen );
-
-    wxBrush brush( "black", wxBRUSHSTYLE_FDIAGONAL_HATCH );
-    dc.SetBrush( brush );
-
-    // centered rect
-    //  define rect size to paint
-
-    int width = 150;
-    int height = 150;
-
-    wxSize size = this->GetSize( );
-
-    int centerX = size.x / 2;
-    int centerY = size.y / 2;
-
-    int startX = centerX / 2;
-    int startY = centerY / 2;
-
-    dc.DrawRectangle( startX, startY, width, height );
-
-    int topLeftX = 0;
-    int topLeftY = 0;
-    // int botRightX = 500;
-    // int botRightY = 500;
-    dc.DrawRectangle( topLeftX, topLeftY, width, height );
-}
+//void MainWindow::_drawRect( wxPaintEvent& event )
+//{
+//    wxPaintDC dc( this ); // create the device context for drawing
+//
+//    wxPen Pen( wxColour( 100, 100, 100, 0.5 ), 2, wxPENSTYLE_DOT_DASH );
+//    dc.SetPen( Pen );
+//
+//    wxBrush brush( "black", wxBRUSHSTYLE_FDIAGONAL_HATCH );
+//    dc.SetBrush( brush );
+//
+//    // centered rect
+//    //  define rect size to paint
+//
+//    int width = 150;
+//    int height = 150;
+//
+//    wxSize size = this->GetSize( );
+//
+//    int centerX = size.x / 2;
+//    int centerY = size.y / 2;
+//
+//    int startX = centerX / 2;
+//    int startY = centerY / 2;
+//
+//    dc.DrawRectangle( startX, startY, width, height );
+//
+//    int topLeftX = 0;
+//    int topLeftY = 0;
+//    // int botRightX = 500;
+//    // int botRightY = 500;
+//    dc.DrawRectangle( topLeftX, topLeftY, width, height );
+//}
 
 void MainWindow::OnSizeChanged( wxSizeEvent& event )
 {
@@ -94,7 +94,7 @@ void MainWindow::OnSize( wxSizeEvent& event )
     event.Skip( );
 }
 
-void MainWindow::OnPaint( wxPaintEvent& event ) { _drawRect( event ); }
+//void MainWindow::OnPaint( wxPaintEvent& event ) { _drawRect( event ); }
 
 void MainWindow::OnButtonClick( wxCommandEvent& event )
 {
