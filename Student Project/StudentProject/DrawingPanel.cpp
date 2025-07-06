@@ -24,6 +24,7 @@ void DrawingPanel::OnPaint( wxPaintEvent& event )
 
 
     wxGraphicsContext* context = wxGraphicsContext::Create( dc );
+
     if ( !context ) return;
     context->SetPen( *wxBLACK );
     context->SetBrush( *wxWHITE );
@@ -31,7 +32,7 @@ void DrawingPanel::OnPaint( wxPaintEvent& event )
     float xOffset = 0.0;
     float yOffset = 0.0;
 
-    wxSize size = this->GetSize( );
+    wxSize size = this->GetParent( )->GetClientSize( );
     float cellSizeX = size.GetWidth( ) / _gridSize;
     float cellSizeY = size.GetHeight( ) / _gridSize;
 
