@@ -1,7 +1,10 @@
 #pragma once
 #include "Window.h"
 #include "wx/display.h"
+
+
 // TODO: Clean up file;
+
 // using macros
 #define BUTTON_EVT_ID_1 30001 // macro for btn_1
 #define BUTTON_EVT_ID_2 30002 // macro for btn_2

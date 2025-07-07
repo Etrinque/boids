@@ -1,7 +1,9 @@
 #pragma once
 #include "wx/wx.h"
 #include "DrawingPanel.h"
+
 // TODO: Clean up file;
+
 class MainWindow : public wxFrame
 {
 public:
