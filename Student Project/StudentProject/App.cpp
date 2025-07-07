@@ -1,15 +1,22 @@
 #include "App.h"
 
-wxIMPLEMENT_APP(App);
+wxIMPLEMENT_APP( App );
 
-App::App() {
-
-}
-
-App::~App() {
+App::App( ) :_main_window( nullptr )
+{
 
 }
 
-bool App::OnInit() {
-	return true;
+App::~App( )
+{
+
+}
+
+bool App::OnInit( )
+{
+    _main_window = new MainWindow( );
+    _main_window->CenterOnScreen( );
+    _main_window->Show( );
+    return true;
+
 }
