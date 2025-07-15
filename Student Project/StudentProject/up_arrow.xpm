@@ -1,5 +1,5 @@
 /* XPM */
-static const char up_arrow[] = {
+static const char* up_arrow[] = {
 "16 16 2 1 ",
 "  c None",
 ". c black",

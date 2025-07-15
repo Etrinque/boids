@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include "wx/wx.h"
 #include "wx/display.h"
 
 

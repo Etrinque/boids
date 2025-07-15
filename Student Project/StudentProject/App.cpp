@@ -1,5 +1,5 @@
 #include "App.h"
-
+#include "Window.h"
 wxIMPLEMENT_APP( App );
 
 App::App( ) :_main_window( nullptr )
