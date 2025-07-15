@@ -6,84 +6,121 @@
 // TODO: Clean up file;
 
 // using macros
-#define BUTTON_EVT_ID_1 30001 // macro for btn_1
-#define BUTTON_EVT_ID_2 30002 // macro for btn_2
+#define PLAY_BUTTON 30001
+#define PAUSE_BUTTON 30002
+#define NEXT_BUTTON 30003
+#define DELETE_BUTTON 30004
+#define QUIT_BUTTON 30005
+#define RESET_BUTTON 30006
 
-// could also use enum...
 
-enum BUTTON_EVT
-{
-    BTN_1 = 30001, // convolution set to 30001
-    BTN_2,
-    BTN_3,
-    BTN_4,
-    BTN_5
-};
-
-// could also use event binding Bind() method to inline functionality for dynamic elements
-
-// define a macro Event Lookup Table
-//wxBEGIN_EVENT_TABLE( MainWindow, wxFrame )
-//EVT_BUTTON( BUTTON_EVT::BTN_1, MainWindow::OnButtonClick ) // register macro for btn 1
-//EVT_BUTTON( BUTTON_EVT_ID_2, MainWindow::OnButtonClick ) EVT_PAINT( OnPaint )
-//EVT_SIZE( OnResize )
-//EVT_SIZE( OnSize ) 
-//wxEND_EVENT_TABLE( )
+wxBEGIN_EVENT_TABLE( MainWindow, wxFrame )
+EVT_TIMER( wxID_ANY, MainWindow::OnTimerTick )
+EVT_BUTTON( PLAY_BUTTON, MainWindow::OnButtonClick )
+EVT_BUTTON( PAUSE_BUTTON, MainWindow::OnButtonClick )
+EVT_BUTTON( NEXT_BUTTON, MainWindow::OnButtonClick )
+EVT_BUTTON( RESET_BUTTON, MainWindow::OnButtonClick )
+EVT_BUTTON( DELETE_BUTTON, MainWindow::OnButtonClick )
+EVT_BUTTON( QUIT_BUTTON, MainWindow::OnButtonClick )
+wxEND_EVENT_TABLE( )
 
 MainWindow::MainWindow( )
-    : wxFrame( nullptr, wxID_ANY, "Boids", wxDefaultPosition, wxSize( 640, 480 ) )
+    : wxFrame( nullptr, wxID_ANY, "Boids", wxDefaultPosition, wxSize( 900, 600 ) )
 {
+    // sizer for dynamic sizing
     wxBoxSizer* sizer = new wxBoxSizer( wxVERTICAL );
     this->SetSizer( sizer );
 
+    // panel
     _drawingPanel = new DrawingPanel( this );
 
     sizer->Add( _drawingPanel, 1, wxEXPAND | wxALL, 10 );
 
+    // method Binding for dynamic resize;
     this->Bind( wxEVT_SIZE, &MainWindow::OnSizeChange, this );
 
-    // TODO: refactor buttons to class
-   /* _button = new wxButton( this, BUTTON_EVT_ID_1, "Click-me", wxDefaultPosition,
-                            wxDefaultSize );
-    _button2 = new wxButton( this, BUTTON_EVT_ID_2, "Click-me_instead",
-                             wxPoint( 100, 0 ), wxDefaultSize );
-    */
+    _toolBar = CreateToolBar( wxTB_VERTICAL | wxTB_RIGHT | wxTB_TEXT, wxID_ANY, "Tools" );
+    _toolBar->AddTool( PLAY_BUTTON, "Play", wxBitmap( play_xpm ) );
+    _toolBar->AddTool( PAUSE_BUTTON, "Pause", wxBitmap( pause_xpm ) );
+    _toolBar->AddTool( NEXT_BUTTON, "Next", wxBitmap( next_xpm ) );
+    _toolBar->AddTool( RESET_BUTTON, "Reset", wxBitmap( reload_arrow_xpm ) );
+    _toolBar->AddTool( DELETE_BUTTON, "Delete", wxBitmap( trash_xpm ) );
+    _toolBar->AddTool( QUIT_BUTTON, "Quit", wxBitmap( x_xpm ) );
+
+    _toolBar->Realize( );
+
+    // status bar for displaying simulation metrics;
+    _statusBar = CreateStatusBar( );
+
+    // stopwatch for displaying running time;
+    _stopWatch = new wxStopWatch( );
+
+    _timer = new wxTimer( this );
+    Bind( wxEVT_TIMER, &MainWindow::OnTimerTick, this );
+    _timer->Start( 16 ); // 60fps
+
+    _simState = RUNNING; //set initial state to running for testing purposes;
+
+    _simSpeed = 1.0;
+
+    wxSize toolBarSize = _toolBar->GetSize( );
+    wxSize statusBarSize = _statusBar->GetSize( );
+
+    wxSize size = this->GetClientSize( );
+    size.x -= toolBarSize.x;
+    size.y -= statusBarSize.y; // adjust size for toolbar and status bar
+    _flockManager = new FlockManager( 50, size.x, size.y );
+    _drawingPanel->SetFlockManager( _flockManager );
 }
 
-MainWindow::~MainWindow( ) {}
+MainWindow::~MainWindow( )
+{
+   /* delete _drawingPanel;
+    delete _toolBar;
+    delete _statusBar;
+    delete _stopWatch;
+    delete _timer;*/
+    delete _flockManager;
+}
 
-//void MainWindow::_drawRect( wxPaintEvent& event )
-//{
-//    wxPaintDC dc( this ); // create the device context for drawing
-//
-//    wxPen Pen( wxColour( 100, 100, 100, 0.5 ), 2, wxPENSTYLE_DOT_DASH );
-//    dc.SetPen( Pen );
-//
-//    wxBrush brush( "black", wxBRUSHSTYLE_FDIAGONAL_HATCH );
-//    dc.SetBrush( brush );
-//
-//    // centered rect
-//    //  define rect size to paint
-//
-//    int width = 150;
-//    int height = 150;
-//
-//    wxSize size = this->GetSize( );
-//
-//    int centerX = size.x / 2;
-//    int centerY = size.y / 2;
-//
-//    int startX = centerX / 2;
-//    int startY = centerY / 2;
-//
-//    dc.DrawRectangle( startX, startY, width, height );
-//
-//    int topLeftX = 0;
-//    int topLeftY = 0;
-//    // int botRightX = 500;
-//    // int botRightY = 500;
-//    dc.DrawRectangle( topLeftX, topLeftY, width, height );
-//}
+void MainWindow::SimulationLoop( SimulationState& state )
+{
+    switch ( state )
+    {
+        case RUNNING:
+            _timer->Start( 16 ); // restart the timer
+            _flockManager->UpdateFlock( 1.0f ); // update frame
+            _drawingPanel->Refresh( );
+            break;
+        case STOPPED:
+            _timer->Stop( );
+            _flockManager->UpdateFlock( 0.0f );
+            _drawingPanel->Refresh( );
+            break;
+        case PAUSED:
+            _timer->Stop( );
+            break;
+        case MANUAL:
+            // TODO: Figure out how to advance state frame to frame;
+            _flockManager->UpdateFlock( 1.0f );
+            _drawingPanel->Refresh( );
+            break;
+        default:
+            break;
+    }
+}
+
+void MainWindow::OnTimerTick( wxTimerEvent& event )
+{
+
+    //SimulationState state = GetSimState( );
+    SimulationLoop( _simState );
+}
+
+void MainWindow::UpdateStatusBar( wxString& status )
+{
+    _statusBar->SetStatusText( status );
+}
 
 void MainWindow::OnSizeChange( wxSizeEvent& event )
 {
@@ -92,25 +129,39 @@ void MainWindow::OnSizeChange( wxSizeEvent& event )
     event.Skip( );
 }
 
-//void MainWindow::OnSize( wxSizeEvent& event )
-//{
-//
-//    Refresh( );
-//    event.Skip( );
-//}
+void MainWindow::OnButtonClick( wxCommandEvent& event )
+{
+    switch ( event.GetId( ) )
+    {
+        case PLAY_BUTTON:
 
-//void MainWindow::OnPaint( wxPaintEvent& event ) { _drawRect( event ); }
+            SetSimState( RUNNING );
+            _timer->Start( 16 ); // start the timer
 
-//void MainWindow::OnButtonClick( wxCommandEvent& event )
-//{
-//    if ( event.GetId( ) == BUTTON_EVT::BTN_1 )
-//    {
-//        _count += 1;
-//        std::string msg = "Clicked " + std::to_string( _count );
-//        _button->SetLabel( msg );
-//    }
-//    else if ( event.GetId( ) == BUTTON_EVT_ID_2 )
-//    {
-//        _button2->SetSize( _button2->GetSize( ).x + 5, _button2->GetSize( ).y + 5 );
-//    }
-//};
+            break;
+
+        case PAUSE_BUTTON:
+
+            SetSimState( PAUSED );
+            break;
+
+        case NEXT_BUTTON:
+            SetSimState( MANUAL );
+            break;
+
+        case RESET_BUTTON:
+            SetSimState( STOPPED );
+            // Reset the flock manager
+            break;
+
+        case DELETE_BUTTON:
+
+            break;
+
+        case QUIT_BUTTON:
+            Close( true );
+            break;
+        default:
+            break;
+    }
+};

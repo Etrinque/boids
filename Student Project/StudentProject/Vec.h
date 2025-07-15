@@ -13,9 +13,51 @@ struct Vec2
     Vec2( float _x, float _y ) { x = _x; y = _y; }
     Vec2 operator+( const Vec2& other ) const { return Vec2( x + other.x, y + other.y ); }
     Vec2 operator-( const Vec2& other ) const { return Vec2( x - other.x, y - other.y ); }
+    Vec2 operator+=( Vec2 vec ) { return Vec2( x + vec.x, y + vec.y ); }
+    Vec2 operator/=( float div )
+    {
+        if ( div != 0 )
+        {
+            x /= div;
+            y /= div;
+            return *this;
+        }
+        else
+        {
+            x = 0;
+            y = 0;
+            return *this;
+        }
+    }
+    Vec2 operator/( float div ) const
+    {
+        if ( div != 0 )
+        {
+            return Vec2( x / div, y / div );
+        }
+        else
+        {
+            return Vec2( 0, 0 );
+        }
+    }
+    Vec2 operator*( float mult ) { return Vec2( x * mult, y * mult ); }
     bool operator==( const Vec2& other ) const
     {
         return x == other.x && y == other.y;
+    }
+    void Normalize( Vec2& vec ) const
+    {
+        float magnitude = std::sqrt( vec.x * vec.x + vec.y * vec.y );
+        if ( magnitude > 0 )
+        {
+            vec.x /= magnitude;
+            vec.y /= magnitude;
+        }
+        else
+        {
+            vec.x = 0;
+            vec.y = 0;
+        }
     }
 };
 

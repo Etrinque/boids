@@ -4,12 +4,9 @@
 #include "wx/dcbuffer.h"
 
 
-//wxBEGIN_EVENT_TABLE( DrawingPanel, wxPanel )
-//EVT_PAINT( DrawingPanel::OnPaint )
-//wxEND_EVENT_TABLE( )
 
 
-DrawingPanel::DrawingPanel( wxFrame* parent ) :wxPanel( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize )
+DrawingPanel::DrawingPanel( wxFrame* parent ) : wxPanel( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize )
 {
     this->SetBackgroundStyle( wxBG_STYLE_PAINT );
     this->Bind( wxEVT_PAINT, &DrawingPanel::OnPaint, this );
@@ -48,4 +45,14 @@ void DrawingPanel::OnPaint( wxPaintEvent& event )
         yOffset += cellSizeY;
     }
 
+    for ( Boid* boid : _flockManager->GetBoidsList( ) )
+    {
+        if ( boid != nullptr )
+        {
+            Vec2 position = boid->GetPosition( );
+            context->SetPen( *wxBLACK );
+            context->SetBrush( *wxGREEN );
+            dc.DrawBitmap( boid->GetIcon( ), position.x, position.y, true );
+        }
+    }
 }
