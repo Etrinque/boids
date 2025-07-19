@@ -368,3 +368,6 @@ FodyWeavers.xsd
 
 settings.bin
 *.cells
+
+.vs/
+x64/
