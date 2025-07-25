@@ -1,17 +1,34 @@
 #include "SettingsDialog.h"
 
 // spin control for timer
-#define TIMER_INTERVAL 40000
-#define NUM_BOIDS 40001
-#define MAX_BOIDS 40002
-#define BOID_VISION 40003
+#define TIMER_INTERVAL 31000
+#define NUM_BOIDS 31001
+#define MAX_BOIDS 31002
+#define BOID_VISION 31003
+
 // choice controls for screen size, grid size, and cell size
-#define SCREEN_SIZE 40004
-#define GRID_SIZE 40005
-#define CELL_SIZE 40006
+#define SCREEN_SIZE 31004
+#define GRID_SIZE 31005
+#define CELL_SIZE 31006
+
 // button controls
-#define OK_BUTTON 40007
-#define CANCEL_BUTTON 40008
+#define OK_BUTTON 31007
+#define CANCEL_BUTTON 31008
+
+// dialog ID
+#define SETTINGS_DIALOG 32000
+
+// label IDs
+#define TIME_INTERVAL_LABEL 32001
+#define STARTING_BOIDS_LABEL 32002
+#define MAX_BOIDS_LABEL 32003
+#define BOID_VISION_LABEL 32004
+
+// choice label IDs
+#define SCREEN_SIZE_LABEL 32005
+#define GRID_SIZE_LABEL 32006
+#define CELL_SIZE_LABEL 32007
+
 
 BEGIN_EVENT_TABLE( SettingsDialog, wxDialog )
 EVT_SPINCTRL( TIMER_INTERVAL, SettingsDialog::OnSpinControlChange )
@@ -25,7 +42,7 @@ EVT_BUTTON( wxID_OK, SettingsDialog::OnButtonChange )
 EVT_BUTTON( wxID_CANCEL, SettingsDialog::OnButtonChange )
 END_EVENT_TABLE( )
 
-inline SettingsDialog::SettingsDialog( wxWindow* parent, wxStandardID, const wxString& title, Settings* settings ) : _settings( settings )
+SettingsDialog::SettingsDialog( wxFrame* parent, Settings* settings ) : wxDialog( parent, SETTINGS_DIALOG, "Settings", wxDefaultPosition, wxDefaultSize ), _settings( settings )
 {
 
     wxBoxSizer* mainSizer = new wxBoxSizer( wxVERTICAL );
@@ -33,16 +50,16 @@ inline SettingsDialog::SettingsDialog( wxWindow* parent, wxStandardID, const wxS
 
     wxBoxSizer* spinSizer = new wxBoxSizer( wxVERTICAL );
 
-    wxStaticText* timeIntervalLabel = new wxStaticText( this, wxID_ANY, "Time Interval (ms)" );
+    wxStaticText* timeIntervalLabel = new wxStaticText( this, TIME_INTERVAL_LABEL, "Time Interval (ms)" );
     wxSpinCtrl* timeIntervalCtrl = new wxSpinCtrl( this, TIMER_INTERVAL, "", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, _settings->TimeInterval ); //up to 1 second frame rate
 
-    wxStaticText* startingBoidsLabel = new wxStaticText( this, wxID_ANY, "Starting Boid #" );
-    wxSpinCtrl* numBoids = new wxSpinCtrl( this, NUM_BOIDS, "", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, settings->NumBoids );
+    wxStaticText* startingBoidsLabel = new wxStaticText( this, STARTING_BOIDS_LABEL, "Starting Boid #" );
+    wxSpinCtrl* numBoids = new wxSpinCtrl( this, NUM_BOIDS, "", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, settings->MaxBoids, settings->NumBoids );
 
-    wxStaticText* maxBoidsLabel = new wxStaticText( this, wxID_ANY, "Max Boids #" );
-    wxSpinCtrl* maxBoids = new wxSpinCtrl( this, MAX_BOIDS, "", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, settings->MaxBoids );
+    wxStaticText* maxBoidsLabel = new wxStaticText( this, MAX_BOIDS_LABEL, "Max Boids #" );
+    wxSpinCtrl* maxBoids = new wxSpinCtrl( this, MAX_BOIDS, "", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, settings->MaxBoids );
 
-    wxStaticText* boidVisionLabel = new wxStaticText( this, wxID_ANY, "Boid Vision Radius" );
+    wxStaticText* boidVisionLabel = new wxStaticText( this, BOID_VISION_LABEL, "Boid Vision Radius" );
     wxSpinCtrl* boidVision = new wxSpinCtrl( this, BOID_VISION, "", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 500, settings->BoidVision );
 
     spinSizer->Add( timeIntervalLabel, 0, wxALL, 5 );
@@ -58,7 +75,7 @@ inline SettingsDialog::SettingsDialog( wxWindow* parent, wxStandardID, const wxS
 
     wxBoxSizer* choicesSizer = new wxBoxSizer( wxVERTICAL );
 
-    wxStaticText* screenSizeLabel = new wxStaticText( this, wxID_ANY, "Screen Size" );
+    wxStaticText* screenSizeLabel = new wxStaticText( this, SCREEN_SIZE_LABEL, "Screen Size" );
     wxArrayString screenSizeChoices;
     screenSizeChoices.Add( "640x480" );
     screenSizeChoices.Add( "800x600" );
@@ -66,9 +83,10 @@ inline SettingsDialog::SettingsDialog( wxWindow* parent, wxStandardID, const wxS
     screenSizeChoices.Add( "1280x720" );
     screenSizeChoices.Add( "1920x1080" );
     wxChoice* screenSizeChoice = new wxChoice( this, SCREEN_SIZE, wxDefaultPosition, wxDefaultSize, screenSizeChoices );
-    screenSizeChoice->SetSelection( 2 );
+    wxString screenSizeStr = std::to_string( ( int )settings->ScreenSize.x ) + "x" + std::to_string( ( int )settings->ScreenSize.y );
+    screenSizeChoice->SetSelection( screenSizeChoice->FindString( screenSizeStr ) );
 
-    wxStaticText* gridSizeLabel = new wxStaticText( this, wxID_ANY, "Grid Size" );
+    wxStaticText* gridSizeLabel = new wxStaticText( this, GRID_SIZE_LABEL, "Grid Size" );
     wxArrayString gridSizeChoices;
     gridSizeChoices.Add( "0" );
     gridSizeChoices.Add( "15" );
@@ -81,9 +99,9 @@ inline SettingsDialog::SettingsDialog( wxWindow* parent, wxStandardID, const wxS
     gridSizeChoices.Add( "85" );
     gridSizeChoices.Add( "95" );
     wxChoice* gridSizeChoice = new wxChoice( this, GRID_SIZE, wxDefaultPosition, wxDefaultSize, gridSizeChoices );
-    gridSizeChoice->SetSelection( 5 );
+    gridSizeChoice->SetSelection( gridSizeChoice->FindString( std::to_string( settings->GridSize ) ) );
 
-    wxStaticText* cellSizeLabel = new wxStaticText( this, wxID_ANY, "Cell Size" );
+    wxStaticText* cellSizeLabel = new wxStaticText( this, CELL_SIZE_LABEL, "Cell Size" );
     wxArrayString cellSizeChoices;
     cellSizeChoices.Add( "5x5" );
     cellSizeChoices.Add( "10x10" );
@@ -91,14 +109,18 @@ inline SettingsDialog::SettingsDialog( wxWindow* parent, wxStandardID, const wxS
     cellSizeChoices.Add( "20x20" );
     cellSizeChoices.Add( "25x25" );
     wxChoice* cellSizeChoice = new wxChoice( this, CELL_SIZE, wxDefaultPosition, wxDefaultSize, cellSizeChoices );
-    cellSizeChoice->SetSelection( 1 );
+    wxString cellSizeStr = std::to_string( ( int )settings->CellSize.x ) + "x" + std::to_string( ( int )settings->CellSize.y );
+    cellSizeChoice->SetSelection( cellSizeChoice->FindString( cellSizeStr ) );
 
     choicesSizer->Add( screenSizeLabel, 0, wxALL, 5 );
     choicesSizer->Add( screenSizeChoice, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5 );
+
     choicesSizer->Add( gridSizeLabel, 0, wxALL, 5 );
     choicesSizer->Add( gridSizeChoice, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5 );
+
     choicesSizer->Add( cellSizeLabel, 0, wxALL, 5 );
     choicesSizer->Add( cellSizeChoice, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5 );
+
     mainSizer->Add( choicesSizer, 0, wxEXPAND | wxALL, 5 );
 
     //=======================END CHOICES==========================
@@ -109,9 +131,10 @@ inline SettingsDialog::SettingsDialog( wxWindow* parent, wxStandardID, const wxS
     buttonSizer->Add( okButton, 0, wxRIGHT, 5 );
     buttonSizer->Add( cancelButton, 0, wxLEFT, 5 );
     mainSizer->Add( buttonSizer, 0, wxALIGN_RIGHT | wxALL, 5 );
+    mainSizer->Fit( this );
 }
 
-inline void SettingsDialog::OnSpinControlChange( wxSpinEvent& event )
+void SettingsDialog::OnSpinControlChange( wxSpinEvent& event )
 {
     int id = event.GetId( );
     int value = event.GetValue( );
@@ -120,15 +143,20 @@ inline void SettingsDialog::OnSpinControlChange( wxSpinEvent& event )
         // TODO: refactor to use setters
         case TIMER_INTERVAL:
             _settings->TimeInterval = value;
+
             break;
         case NUM_BOIDS:
+
             _settings->NumBoids = value;
+
             break;
         case MAX_BOIDS:
             _settings->MaxBoids = value;
+
             break;
         case BOID_VISION:
             _settings->BoidVision = value;
+
             break;
 
         default:
@@ -138,20 +166,26 @@ inline void SettingsDialog::OnSpinControlChange( wxSpinEvent& event )
 
 void SettingsDialog::OnChoiceChange( wxCommandEvent& event )
 {
-    // Handle choice change if needed
     int id = event.GetId( );
-    wxString value = event.GetString( );
+    wxObject* choiceObj = event.GetEventObject( );
+    wxString choiceValue = static_cast< wxChoice* >( choiceObj )->GetStringSelection( );
+
     switch ( id )
     {
         case SCREEN_SIZE:
-            // Handle screen size change
+            _settings->ScreenSize.x = wxAtof( choiceValue.BeforeFirst( 'x' ) );
+            _settings->ScreenSize.y = wxAtof( choiceValue.AfterFirst( 'x' ) );
             break;
+
         case GRID_SIZE:
-            // Handle grid size change
+            _settings->GridSize = static_cast< int >( wxAtof( choiceValue ) );
             break;
+
         case CELL_SIZE:
-            // Handle cell size change
+            _settings->CellSize.x = wxAtof( choiceValue.BeforeFirst( 'x' ) );
+            _settings->CellSize.y = wxAtof( choiceValue.AfterFirst( 'x' ) );
             break;
+
         default:
             break;
     }
@@ -160,11 +194,13 @@ void SettingsDialog::OnButtonChange( wxCommandEvent& event )
 {
     if ( event.GetId( ) == wxID_OK )
     {
+        _settings->SaveSettings( );
         // Save settings and close dialog
         EndModal( wxID_OK );
     }
     else if ( event.GetId( ) == wxID_CANCEL )
     {
+        _settings->LoadSettings( );
         // Close dialog without saving
         EndModal( wxID_CANCEL );
     }

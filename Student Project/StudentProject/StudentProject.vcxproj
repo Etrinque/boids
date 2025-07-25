@@ -105,9 +105,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Binaries\include;$(SolutionDir)Binaries\include\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Binaries\lib;$(SolutionDir)Binaries\include\msvc;$(SolutionDir)Binaries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,9 +133,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Boid.cpp" />
+    <ClCompile Include="DrawingPanel.cpp" />
+    <ClCompile Include="FlockControlPanel.cpp" />
+    <ClCompile Include="FlockManager.cpp" />
+    <ClCompile Include="SettingsDialog.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="Boid.h" />
+    <ClInclude Include="DrawingPanel.h" />
+    <ClInclude Include="FlockControlPanel.h" />
+    <ClInclude Include="FlockManager.h" />
+    <ClInclude Include="Helper.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="SettingsDialog.h" />
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="Vec.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

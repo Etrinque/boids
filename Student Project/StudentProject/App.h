@@ -1,7 +1,7 @@
 #pragma once
 
 #include "wx/wx.h"
-
+#include <ctime>
 #include "Window.h"
 
 class App : public wxApp

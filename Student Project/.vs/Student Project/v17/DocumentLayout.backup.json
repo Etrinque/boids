@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:StudentProject\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockControlPanel.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|solutionrelative:StudentProject\\FlockControlPanel.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:StudentProject\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|solutionrelative:StudentProject\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\App.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|solutionrelative:StudentProject\\App.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockControlPanel.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|solutionrelative:StudentProject\\FlockControlPanel.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\App.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|solutionrelative:StudentProject\\App.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Helper.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|solutionrelative:StudentProject\\Helper.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Boid.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:StudentProject\\Boid.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Vec.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:StudentProject\\Vec.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:StudentProject\\FlockManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F567F738-4B5C-420C-AC05-5F1D6D1AA752}|StudentProject\\StudentProject.vcxproj|solutionrelative:StudentProject\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,8 +29,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "DockedWidth": 216,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,89 +58,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Vec.h",
-              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Vec.h",
-              "RelativeDocumentMoniker": "StudentProject\\Vec.h",
-              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Vec.h",
-              "RelativeToolTip": "StudentProject\\Vec.h",
-              "ViewState": "AgIAABoAAAAAAAAAAAAuwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-14T03:39:46.32Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Boid.h",
-              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Boid.h",
-              "RelativeDocumentMoniker": "StudentProject\\Boid.h",
-              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Boid.h",
-              "RelativeToolTip": "StudentProject\\Boid.h",
-              "ViewState": "AgIAABEAAAAAAAAAAAAuwDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T02:35:35.314Z",
+              "DocumentIndex": 0,
+              "Title": "FlockControlPanel.cpp",
+              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockControlPanel.cpp",
+              "RelativeDocumentMoniker": "StudentProject\\FlockControlPanel.cpp",
+              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockControlPanel.cpp",
+              "RelativeToolTip": "StudentProject\\FlockControlPanel.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-25T00:58:25.377Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Window.cpp",
-              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.cpp",
-              "RelativeDocumentMoniker": "StudentProject\\Window.cpp",
-              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.cpp",
-              "RelativeToolTip": "StudentProject\\Window.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-14T03:12:09.685Z",
+              "DocumentIndex": 2,
+              "Title": "FlockControlPanel.h",
+              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockControlPanel.h",
+              "RelativeDocumentMoniker": "StudentProject\\FlockControlPanel.h",
+              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockControlPanel.h",
+              "RelativeToolTip": "StudentProject\\FlockControlPanel.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-25T00:58:10.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "App.cpp",
-              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\App.cpp",
-              "RelativeDocumentMoniker": "StudentProject\\App.cpp",
-              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\App.cpp",
-              "RelativeToolTip": "StudentProject\\App.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-14T03:19:34.092Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "App.h",
-              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\App.h",
-              "RelativeDocumentMoniker": "StudentProject\\App.h",
-              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\App.h",
-              "RelativeToolTip": "StudentProject\\App.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Title": "Helper.h",
+              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Helper.h",
+              "RelativeDocumentMoniker": "StudentProject\\Helper.h",
+              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Helper.h",
+              "RelativeToolTip": "StudentProject\\Helper.h",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-14T03:37:42.226Z"
+              "WhenOpened": "2025-07-25T00:46:12.067Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FlockManager.h",
-              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockManager.h",
-              "RelativeDocumentMoniker": "StudentProject\\FlockManager.h",
-              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\FlockManager.h",
-              "RelativeToolTip": "StudentProject\\FlockManager.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAYwHsAAACJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-14T03:20:37.276Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Window.h",
               "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.h",
               "RelativeDocumentMoniker": "StudentProject\\Window.h",
               "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.h",
               "RelativeToolTip": "StudentProject\\Window.h",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAxwAoAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA5wFIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-14T03:39:45.362Z"
+              "WhenOpened": "2025-07-23T12:20:54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Window.cpp",
+              "DocumentMoniker": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.cpp",
+              "RelativeDocumentMoniker": "StudentProject\\Window.cpp",
+              "ToolTip": "C:\\Users\\SOLVD\\source\\repos\\cos1-25-07-Etrinque\\Student Project\\StudentProject\\Window.cpp",
+              "RelativeToolTip": "StudentProject\\Window.cpp",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAMAAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-19T03:04:19.291Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -7,7 +7,7 @@ class SettingsDialog :
     public wxDialog
 {
 public:
-    SettingsDialog( wxWindow* parent, wxStandardID = wxID_ANY, const wxString& title, Settings* settings );;
+    SettingsDialog( wxFrame* parent, Settings* settings );;
 
     int GetTimeInterval( ) const { return _settings->TimeInterval; };
     Vec2 GetScreenSize( ) const { return _settings->ScreenSize; };

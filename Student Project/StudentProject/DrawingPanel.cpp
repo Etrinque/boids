@@ -2,9 +2,7 @@
 #include "wx/wx.h"
 #include "wx/graphics.h"
 #include "wx/dcbuffer.h"
-
-
-
+#include "wx/font.h"
 
 DrawingPanel::DrawingPanel( wxFrame* parent ) : wxPanel( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize )
 {
@@ -12,7 +10,7 @@ DrawingPanel::DrawingPanel( wxFrame* parent ) : wxPanel( parent, wxID_ANY, wxDef
     this->Bind( wxEVT_PAINT, &DrawingPanel::OnPaint, this );
 }
 
-DrawingPanel::~DrawingPanel( ) {}
+DrawingPanel::~DrawingPanel( ) {};
 
 void DrawingPanel::OnPaint( wxPaintEvent& event )
 {
@@ -22,8 +20,7 @@ void DrawingPanel::OnPaint( wxPaintEvent& event )
     wxGraphicsContext* context = wxGraphicsContext::Create( dc );
 
     if ( !context ) return;
-    context->SetPen( *wxBLACK );
-    context->SetBrush( *wxWHITE );
+    context->SetPen( *wxLIGHT_GREY );
 
     float xOffset = 0.0;
     float yOffset = 0.0;
@@ -50,9 +47,40 @@ void DrawingPanel::OnPaint( wxPaintEvent& event )
         if ( boid != nullptr )
         {
             Vec2 position = boid->GetPosition( );
-            context->SetPen( *wxBLACK );
-            context->SetBrush( *wxGREEN );
-            dc.DrawBitmap( boid->GetIcon( ), position.x, position.y, true );
+
+            position.x = std::min( position.x, GetClientSize( ).x - boid->GetBoidSize( ) ); // temp fix for overdraw
+            position.y = std::min( position.y, GetClientSize( ).y - boid->GetBoidSize( ) ); // temp fix for overdraw
+
+            wxBitmap rotatedIcon = boid->GetRotatedIcon( );
+
+            dc.DrawBitmap( rotatedIcon, position.x, position.y, true );
         }
     }
+
+    if ( _isHudShown )
+    {
+        dc.SetFont( wxFontInfo( 12 ).Bold( ) );
+
+        wxSize size = this->GetClientSize( );
+
+        wxString hudText = wxString::Format(
+            "World Size: %d x %d\n"
+            "Boids: %d\n",
+            size.GetWidth( ), size.GetHeight( ),
+            _flockManager->GetNumBoids( )
+        );
+
+        wxSize textSize = dc.GetTextExtent( hudText );
+
+        //// Draw black background for better readability
+        //dc.SetBrush( wxBrush( wxColour( 0, 0, 0, 128 ) ) ); // Semi-transparent black
+        //dc.SetPen( *wxTRANSPARENT_PEN );
+        //dc.DrawRectangle( 10, size.GetHeight( ) - textSize.GetHeight( ) - 20,
+        //                  textSize.GetWidth( ) + 20, textSize.GetHeight( ) + 10 );
+
+         // Draw text at the bottom left corner with padding
+        dc.DrawText( hudText, 20, size.GetHeight( ) - textSize.GetHeight( ) - 15 );
+    }
+
+
 }
